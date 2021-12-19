@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 DAYS = ((0, "Tuesday"), (1, "Thursday"), (2, "Saturday"))
 LEVELS = ((0, "Beginner"), (1, "Intermediate"), (2, "Push yourself"))
 
-# Create your models here.
+#schema for Event model
 class Event(models.Model):
     name = models.CharField(max_length=200, unique=True)
     day = models.IntegerField(choices=DAYS)
@@ -14,6 +14,7 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+#schema for Booking model
 class Booking(models.Model):
     fname = models.CharField(max_length=200) #unique=False?
     lname = models.CharField(max_length=200)
@@ -23,9 +24,9 @@ class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        output = self.fname + self.lname + '-' + self.email
-        return output
+        return f"{self.fname} {self.lname} - {self.email} booked {self.option}"
 
+#schema for Contact model of contact form
 class Contact(models.Model):
     fname = models.CharField(max_length=200) #unique=False?
     lname = models.CharField(max_length=200)
@@ -33,4 +34,4 @@ class Contact(models.Model):
     message = models.TextField(blank=False)
 
     def __str__(self):
-        return self.message
+        return f"{self.message} from {self.email}"
