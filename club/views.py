@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views import generic
+from django.views import generic, View
+from django.views.generic.base import TemplateView
 from .models import Event
 
 class EventList(generic.ListView):
@@ -8,3 +9,8 @@ class EventList(generic.ListView):
 
     Event.objects.all()
     template_name = 'events.html'
+
+
+class HomePage(TemplateView):
+    
+    template_name = 'index.html'

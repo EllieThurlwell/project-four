@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- bootstrap theme stylesheet -->
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/freelancer.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -77,6 +78,6 @@
     </footer>
 
     <!-- bootstrap theme script -->
-    <script src="{{ static 'js/freelancerscript' }}"></script>
+    <script src="{% static 'js/freelancerscript' %}"></script>
 </body>
 </html>
