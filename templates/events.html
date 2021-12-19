@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+        Events
+    </h2>
+    <div class="row justify-content-center">
+        <!-- event items -->
+        {% for event in event_list %}
+            <div class="col-sm-6">
+                <div class="card">
+                    {% if "placeholder" in event.featured_image.url %}
+                        <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Ftriatletasenred.sport.es%2Fwp-content%2Fuploads%2FRunners.jpg&imgrefurl=https%3A%2F%2Ftriatletasenred.sport.es%2Fen-red%2Flibros-para-runners%2F&tbnid=-lC6ofzpW1fmTM&vet=12ahUKEwj8qaSjqfD0AhUBdRoKHUF6Bq4QMygDegUIARDPAQ..i&docid=lbA1JuRVA_JGMM&w=728&h=483&itg=1&q=runners&ved=2ahUKEwj8qaSjqfD0AhUBdRoKHUF6Bq4QMygDegUIARDPAQ" class="card-img-top" alt="{{ event.location }}">
+                    {% else %}
+                        <img src="{{ event.featured_image.url }}" class="card-img-top" alt="{{ event.location }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.name }}</h5>
+                        <p class="card-text">Join us on {{ event.day }} for a run at {{ event.location }}.<p>Level: {{ event.level }} </p></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

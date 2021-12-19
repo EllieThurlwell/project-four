@@ -8,4 +8,3 @@ class EventList(generic.ListView):
 
     Event.objects.all()
     template_name = 'events.html'
-    paginate_by = 9
