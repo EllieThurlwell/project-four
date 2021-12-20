@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% load crispy_forms_tags %}
+
 <div class="container">
     <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
         Contact Us
@@ -10,25 +12,13 @@
         <div class="col-lg-8">
             <p>Want to get in touch? Fill out the form and we'll get back to you as soon as we finish our run!</p>
         </div>
-        <div class="form-floating mb-3 col-lg-8">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">First name</label>
-        </div>
-        <div class="form-floating mb-3 col-lg-8">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Last name</label>
-        </div>
-        <div class="form-floating mb-3 col-lg-8">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email</label>
-        </div>
-        <div class="form-floating col-lg-8">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Message</label>
-        </div>
-    </div>
 
+        <form method="post" style="margin-top: 1.3em;">
+            {{ contact_form | crispy }}
+            {% csrf_token %}
+            <button type="submit" class="btn">Send message</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}

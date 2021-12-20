@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <!-- display (form?) content to book a run -->
+{% else %}
+    <!-- prompt to sign up or login, with links -->
+{% endif %}
+
+{% endblock %}
