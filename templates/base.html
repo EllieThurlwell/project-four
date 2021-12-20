@@ -29,30 +29,17 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'events' %}">Events</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Join Us</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'contact' %}">Contact</a></li>
-                    <!-- {% if user.is_authenticated %}
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Contact</a></li>
-                    {% endif %} -->
+                    {% if user.is_authenticated %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'account_logout' %}">Log Out</a></li>
+                    {% else %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'account_signup' %}">Join Us</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'account_login' %}">Log In</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
-
-    <!-- header -->
-    <header class="masthead bg-primary text-white text-center">
-        <div class="container d-flex align-items-center flex-column">
-            <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="bcn run header" />
-            <h1 class="masthead-heading text-uppercase mb-0">BCN RUN</h1>
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-running"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <p class="masthead-subheading font-weight-light mb-0">fun and friendly running club in beautiful Barcelona</p>
-        </div>
-    </header>
 
     <!-- main content -->
     <section class="page-section">
