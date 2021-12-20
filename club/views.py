@@ -17,28 +17,41 @@ class HomePage(TemplateView):
     template_name = 'index.html'
 
 
-class Contact(TemplateView):
+def contact(request):
     #view to render the Contact form to contact.html
-
+    contact_form = None
     # forms displays if send clicked. need a get method first?
-    def post(self, request):
-
+    if request.method == 'POST':    
         contact_form = ContactForm(data=request.POST)
-        if contact_form.is_valid():
-            contact_form.instance.fname = request.user.fname
-            contact_form.instance.lname = request.user.lname
-            contact_form.instance.email = request.user.email
-            message = contact_form.save(commit=False)
-            message.save()
-        else:
-            contact_form = ContactForm()
+    if contact_form.is_valid():
+        contact_form.instance.fname = request.user.fname
+        contact_form.instance.lname = request.user.lname
+        contact_form.instance.email = request.user.email
+        message = contact_form.save(commit=False)
+        message.save()
+    else:
+        contact_form = ContactForm()
+    return render(request, 'contact.html', {'contact_form': contact_form})
 
-        return render(
-            request,
-            'contact.html',
-            {
-                'contact_form': contact_form
-            },
-        )
 
-    template_name = 'contact.html'
+# class Contact(TemplateView):
+#     #view to render the Contact form to contact.html
+
+#     # forms displays if send clicked. need a get method first?
+#     def post(self, request):
+
+#         contact_form = ContactForm(data=request.POST)
+#         if contact_form.is_valid():
+#             message = contact_form.save()
+#         else:
+#             contact_form = ContactForm()
+
+#         return render(
+#             request,
+#             'contact.html',
+#             {
+#                 'contact_form': contact_form
+#             },
+#         )
+
+#     template_name = 'contact.html'
