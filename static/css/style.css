@@ -1,0 +1,6 @@
+/* personal style decisions not from bootstrap template */
+
+#map {
+    height: 40vh;
+    width: 40vw;
+  }

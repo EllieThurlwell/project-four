@@ -24,11 +24,7 @@ def contact(request):
     if request.method == 'POST':    
         contact_form = ContactForm(data=request.POST)
     if contact_form.is_valid():
-        contact_form.instance.fname = request.user.fname
-        contact_form.instance.lname = request.user.lname
-        contact_form.instance.email = request.user.email
-        message = contact_form.save(commit=False)
-        message.save()
+        contact = contact_form.save()
     else:
         contact_form = ContactForm()
     return render(request, 'contact.html', {'contact_form': contact_form})

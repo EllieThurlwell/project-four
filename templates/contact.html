@@ -13,7 +13,7 @@
             <p>Want to get in touch? Fill out the form and we'll get back to you as soon as we finish our run!</p>
         </div>
 
-        <form method="post" style="margin-top: 1.3em;">
+        <form method="POST" style="margin-top: 1.3em;">
             {{ contact_form | crispy }}
             {% csrf_token %}
             <button type="submit" class="btn">Send message</button>
