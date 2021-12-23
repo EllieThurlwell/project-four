@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.views import generic, View
+from django.http.response import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.conf import settings
 from .models import Event
@@ -15,7 +16,7 @@ class EventList(generic.ListView):
 
 
 def getMap(request):
-
+    #view to render the map to events page
     context = Context({"api_key": MAPS_API_KEY})
     # context = { 'api_key': settings.MAPS_API_KEY}
     return render(request,'events.html', context)
@@ -26,10 +27,8 @@ class HomePage(TemplateView):
     template_name = 'index.html'
 
 
-
-    #view to render the booking page
-
 def booking(request):
+    #view to render the booking page
     booking_form = None
     if request.method == 'POST':
         booking_form = BookingForm(data=request.POST)
@@ -43,7 +42,6 @@ def booking(request):
 def contact(request):
     #view to render the Contact form to contact.html
     contact_form = None
-    # forms displays if send clicked. need a get method first?
     if request.method == 'POST':    
         contact_form = ContactForm(data=request.POST)
         if contact_form.is_valid():
@@ -51,3 +49,5 @@ def contact(request):
     else:
         contact_form = ContactForm()
     return render(request, 'contact.html', {'contact_form': contact_form})
+    return HttpResponseRedirect(reverse('home'))
+    

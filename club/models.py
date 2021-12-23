@@ -19,9 +19,9 @@ class Booking(models.Model):
     fname = models.CharField(max_length=200) #unique=False?
     lname = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
-    option = models.IntegerField(choices=LEVELS, default=0)
+    option = models.IntegerField(choices=LEVELS, default=0) #not necessary?
     date = models.DateField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE) #needs to be current logged in user (pre-populated if poss)
 
     def __str__(self):
         return f"{self.fname} {self.lname} - {self.email} booked {self.option}"
@@ -30,7 +30,7 @@ class Booking(models.Model):
 class Contact(models.Model):
     fname = models.CharField(max_length=200) #unique=False?
     lname = models.CharField(max_length=200)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=False)
     message = models.TextField(blank=False)
 
     def __str__(self):
