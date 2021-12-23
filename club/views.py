@@ -4,6 +4,7 @@ from django.views.generic.base import TemplateView
 from django.conf import settings
 from .models import Event
 from .forms import ContactForm, BookingForm
+from bcnrun.settings import MAPS_API_KEY
 
 class EventList(generic.ListView):
     #view to render the Event objects, max 9 per page
@@ -15,7 +16,7 @@ class EventList(generic.ListView):
 
 def getMap(request):
 
-    context = Context({"api_key": settings.MAPS_API_KEY})
+    context = Context({"api_key": MAPS_API_KEY})
     # context = { 'api_key': settings.MAPS_API_KEY}
     return render(request,'events.html', context)
 
@@ -25,20 +26,18 @@ class HomePage(TemplateView):
     template_name = 'index.html'
 
 
-class BookingPage(TemplateView):
+
     #view to render the booking page
 
-    def booking(request):
-        if request.method == 'POST':
-            booking_form = BookingForm(data=request.POST)
+def booking(request):
+    booking_form = None
+    if request.method == 'POST':
+        booking_form = BookingForm(data=request.POST)
         if booking_form.is_valid():
             booking_form = booking_form.save()
-        else:
-            booking_form = BookingForm()
-        return render(request, 'booking.html', {'booking_form': booking_form})
-
-
-    template_name = 'booking.html'
+    else:
+        booking_form = BookingForm()
+    return render(request, 'booking.html', {'booking_form': booking_form})
 
 
 def contact(request):
