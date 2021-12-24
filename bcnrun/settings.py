@@ -36,8 +36,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['bcn-run.herokuapp.com', 'localhost']
 
-MAPS_API_KEY = os.environ.get('MAPS_API_KEY')
-
 
 # Application definition
 

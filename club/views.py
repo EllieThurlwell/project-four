@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateView
 from django.conf import settings
 from .models import Event, Booking
 from .forms import ContactForm, BookingForm
-from bcnrun.settings import MAPS_API_KEY
+
 
 class EventList(generic.ListView):
     #view to render the Event objects, max 9 per page
@@ -13,13 +13,6 @@ class EventList(generic.ListView):
 
     Event.objects.all()
     template_name = 'events.html'
-
-
-def getMap(request):
-    #view to render the map to events page
-    context = Context({"api_key": MAPS_API_KEY})
-    # context = { 'api_key': settings.MAPS_API_KEY}
-    return render(request,'events.html', context)
 
 
 class HomePage(TemplateView):
