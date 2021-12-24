@@ -23,9 +23,12 @@ class HomePage(TemplateView):
 def booking(request):
     #view to render the booking page
     booking_form = None
+    # current_user = request.user
+    # booking_form = BookingForm(initial={'user': current_user.username})
     if request.method == 'POST':
         booking_form = BookingForm(data=request.POST)
         if booking_form.is_valid():
+            # booking_form.instance.user = request.user.username
             booking_form = booking_form.save()
             return HttpResponseRedirect(reverse('booking'))
     else:
@@ -34,6 +37,7 @@ def booking(request):
     context = {'booking_form': booking_form}
 
     return render(request, 'booking.html', context)
+    
     model = Booking
     booked_run = Booking.objects.create(
         user=request.user,
@@ -60,3 +64,13 @@ def contact(request):
     return render(request, 'contact.html', context)
     
     
+class ManageBooking(generic.ListView):
+    #view to render the manage booking page for logged in user
+    model = Booking
+    context_object_name = 'runs'
+    paginate_by = 6
+    template_name = 'manage.html'
+
+    def get_queryset(self):
+        return Booking.objects.filter(user=self.request.user)
+

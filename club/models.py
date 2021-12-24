@@ -18,8 +18,7 @@ class Event(models.Model):
 class Booking(models.Model):
     fname = models.CharField(max_length=200) #unique=False?
     lname = models.CharField(max_length=200)
-    email = models.EmailField(unique=True)
-    option = models.IntegerField(choices=LEVELS, default=0) #not necessary?
+    email = models.EmailField(unique=False)
     date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE) #needs to be current logged in user (pre-populated if poss)
 
