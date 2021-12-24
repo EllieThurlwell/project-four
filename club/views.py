@@ -21,14 +21,17 @@ class HomePage(TemplateView):
 
 
 def booking(request):
-    #view to render the booking page
+    #view to render the Booking form to booking.html
     booking_form = None
     # current_user = request.user
     # booking_form = BookingForm(initial={'user': current_user.username})
     if request.method == 'POST':
         booking_form = BookingForm(data=request.POST)
+        # current_user = request.user
+        # booking_form = BookingForm(initial={'username': current_user})
         if booking_form.is_valid():
-            # booking_form.instance.user = request.user.username
+            # current_user = request.user
+            # booking_form = BookingForm(initial={'username': current_user})
             booking_form = booking_form.save()
             return HttpResponseRedirect(reverse('booking'))
     else:
@@ -63,7 +66,7 @@ def contact(request):
 
     return render(request, 'contact.html', context)
     
-    
+  
 class ManageBooking(generic.ListView):
     #view to render the manage booking page for logged in user
     model = Booking
@@ -74,9 +77,31 @@ class ManageBooking(generic.ListView):
     def get_queryset(self):
         return Booking.objects.filter(user=self.request.user)
 
-    # def edit_booking()
+
+class EditBooking(View):
+    def get(self, request, id):
+        queryset = Booking.objects.filter(user=request.user)
+        run = get_object_or_404(queryset, id=id)
+        # context = {'edit_booking_form': BookingForm(instance=run)}
+
+        return render(request, 'edit-booking.html', {'edit_booking_form': BookingForm(instance=run)})
+
+    def post(self, request, id):
+        queryset = Booking.objects.filter(user=request.user)
+        run = get_object_or_404(queryset, id=id)
+        edit_booking_form = BookingForm(request.POST, instance=run)
+
+        if edit_booking_form.is_valid():
+            edit_booking_form.save()
+            
+        else:
+            edit_booking_form = BookingForm(instance=run)
+
+        return render(request, 'manage.html')
+
 
 def delete_booking(request, id):
+    #view to delete a specific booking
     queryset = Booking.objects.filter(user=request.user)
     run = get_object_or_404(queryset, id=id)
 
