@@ -5,12 +5,12 @@ from django import forms
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ('fname', 'lname', 'email', 'message',)
+        fields = ('name', 'email', 'message',)
 
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ('user', 'fname', 'lname', 'email', 'date',)
+        fields = ('name', 'email', 'date',)
 
     date = forms.DateField(
             widget=forms.TextInput(

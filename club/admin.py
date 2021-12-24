@@ -8,8 +8,8 @@ class EventAdmin(admin.ModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('fname', 'lname', 'email', 'message')
+    list_display = ('name', 'email', 'message')
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('user', 'fname', 'lname', 'email', 'date')
+    list_display = ('user', 'name', 'email', 'date')

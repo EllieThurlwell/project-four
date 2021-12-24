@@ -17,7 +17,7 @@
             <div class="col-sm-6">
                 <div class="card">
                     {% if "placeholder" in event.featured_image.url %}
-                        <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Ftriatletasenred.sport.es%2Fwp-content%2Fuploads%2FRunners.jpg&imgrefurl=https%3A%2F%2Ftriatletasenred.sport.es%2Fen-red%2Flibros-para-runners%2F&tbnid=-lC6ofzpW1fmTM&vet=12ahUKEwj8qaSjqfD0AhUBdRoKHUF6Bq4QMygDegUIARDPAQ..i&docid=lbA1JuRVA_JGMM&w=728&h=483&itg=1&q=runners&ved=2ahUKEwj8qaSjqfD0AhUBdRoKHUF6Bq4QMygDegUIARDPAQ" class="card-img-top" alt="{{ event.location }}">
+                        <img src="https://res.cloudinary.com/elliecloud94/image/upload/v1640370315/hero_ldzbyr.jpg" class="card-img-top" alt="{{ event.location }}">
                     {% else %}
                         <img src="{{ event.featured_image.url }}" class="card-img-top" alt="{{ event.location }}">
                     {% endif %}
