@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404
 from django.views import generic, View
 from django.http.response import HttpResponseRedirect
 from django.views.generic.base import TemplateView
@@ -73,4 +73,14 @@ class ManageBooking(generic.ListView):
 
     def get_queryset(self):
         return Booking.objects.filter(user=self.request.user)
+
+    # def edit_booking()
+
+def delete_booking(request, id):
+    queryset = Booking.objects.filter(user=request.user)
+    run = get_object_or_404(queryset, id=id)
+
+    run.delete()
+
+    return HttpResponseRedirect(reverse('manage'))
 
