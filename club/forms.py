@@ -10,4 +10,9 @@ class ContactForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ('user', 'fname', 'lname', 'email', 'date',)
+        date = forms.DateField(
+            widget=forms.TextInput(
+                attrs={'type': 'date'}
+            )
+        )
+        fields = ('user', 'fname', 'lname', 'email', 'date',) #date validity?

@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.http.response import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.conf import settings
-from .models import Event
+from .models import Event, Booking
 from .forms import ContactForm, BookingForm
 from bcnrun.settings import MAPS_API_KEY
 
@@ -34,10 +34,22 @@ def booking(request):
         booking_form = BookingForm(data=request.POST)
         if booking_form.is_valid():
             booking_form = booking_form.save()
+            return HttpResponseRedirect(reverse('booking'))
     else:
         booking_form = BookingForm()
-    return render(request, 'booking.html', {'booking_form': booking_form})
 
+    context = {'booking_form': booking_form}
+
+    return render(request, 'booking.html', context)
+    model = Booking
+    booked_run = Booking.objects.create(
+        user=request.user,
+        first_name=fname,
+        last_name=lname,
+        email=email,
+        date=date
+    )
+    booked_run.save()
 
 def contact(request):
     #view to render the Contact form to contact.html
@@ -46,8 +58,12 @@ def contact(request):
         contact_form = ContactForm(data=request.POST)
         if contact_form.is_valid():
             contact = contact_form.save()
+            return HttpResponseRedirect(reverse('contact'))
     else:
         contact_form = ContactForm()
-    return render(request, 'contact.html', {'contact_form': contact_form})
-    return HttpResponseRedirect(reverse('home'))
+
+    context = {'contact_form': contact_form}
+
+    return render(request, 'contact.html', context)
+    
     
