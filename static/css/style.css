@@ -1,5 +1,35 @@
 /* personal style decisions not from bootstrap template */
 
+/* index.html */
+#header {
+  padding-bottom: 3rem;
+}
+
+#title {
+  padding-top: 2rem;
+}
+
+#headerdiv {
+  position: relative;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#heroimg {
+  width: 95vw;
+}
+
+#about {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+#about-text {
+  padding-bottom: 2rem;
+}
+
+
+
 #map {
     height: 40vh;
     width: 40vw;

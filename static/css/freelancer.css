@@ -11292,9 +11292,7 @@ html {
   scroll-padding-top: calc(4.5rem - 1px);
 }
 
-.page-section {
-  padding: 6rem 0;
-}
+
 .page-section .page-section-heading {
   font-size: 2.25rem;
   line-height: 2rem;
@@ -11331,9 +11329,6 @@ html {
   color: #2c3e50;
   font-size: 2rem;
 }
-.divider-custom.divider-light .divider-custom-line {
-  background-color: #fff;
-}
 .divider-custom.divider-light .divider-custom-icon {
   color: #fff;
 }
@@ -11346,9 +11341,9 @@ html {
 .btn-social {
   border-radius: 100%;
   display: inline-flex;
-  width: 3.25rem;
-  height: 3.25rem;
-  font-size: 1.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1rem;
   justify-content: center;
   align-items: center;
 }
@@ -11431,7 +11426,7 @@ html {
 }
 
 .masthead {
-  padding-top: calc(6rem + 74px);
+  padding-top: calc(1rem + 74px);
   padding-bottom: 6rem;
 }
 .masthead .masthead-heading {
@@ -11447,7 +11442,7 @@ html {
 
 @media (min-width: 992px) {
   .masthead {
-    padding-top: calc(6rem + 104px);
+    padding-top: calc(1rem + 104px);
     padding-bottom: 6rem;
   }
   .masthead .masthead-heading {
@@ -11498,8 +11493,8 @@ html {
 }
 
 .footer {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background-color: #2c3e50;
   color: #fff;
 }

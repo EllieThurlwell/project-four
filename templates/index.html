@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<!-- header -->
-<header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
+<div id="index">
+    <!-- header -->
+<header class="masthead bg-primary text-white text-center" id="header">
+    <div class="container d-flex align-items-center flex-column" id="headerdiv">
         <!-- Masthead Avatar Image-->
-        <img src="https://res.cloudinary.com/elliecloud94/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1640368821/heroimg_a6vzrj.jpg" alt="bcn run header"/>
-        <h1 class="masthead-heading text-uppercase mb-0">BCN RUN</h1>
+        <img src="https://res.cloudinary.com/elliecloud94/image/upload/v1640526940/hero_mjw9z0.jpg" alt="bcn run header" id="heroimg"/>
+        <h1 class="masthead-heading text-uppercase mb-0" id="title">BCN RUN</h1>
         <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-running"></i></div>
+            <div class="divider-custom-line headerdiv"></div>
+            <div class="headerdiv"><i class="fas fa-running"></i></div>
             <div class="divider-custom-line"></div>
         </div>
         <p class="masthead-subheading font-weight-light mb-0">fun and friendly running club in beautiful Barcelona</p>
@@ -18,10 +18,10 @@
 </header>
 
 <div class="container">
-    <h2 class="page-section-heading text-center text-uppercase text-secondary">
+    <h2 class="page-section-heading text-center text-uppercase text-secondary" id="about">
         About
     </h2>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" id="about-text">
         <div class="col-lg-8">
             <p class="lead">
                 BCN RUN is a running group focused on people. A friendly, fun and sometimes fast group, we run TOGETHER. We believe that what's most important is enjoying yourself when you run. PBs are nice, but not the be all and end all. However, as we are an inclusive club, there's definitly a place for you if you do want to chase that next record!
@@ -35,5 +35,7 @@
         </div>
     </div>
 </div>
+</div>
+
 
 {% endblock %}
