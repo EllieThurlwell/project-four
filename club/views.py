@@ -115,7 +115,7 @@ from django.views import generic, View
 from django.http.response import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.conf import settings
-from .models import Event, Booking
+from .models import Event, Booking, DAYS, LEVELS
 from .forms import ContactForm, BookingForm
 
 
@@ -123,12 +123,31 @@ class HomePage(TemplateView):
     #view to render the homepage
     template_name = 'index.html'
     
-class EventList(generic.ListView):
-    #view to render the Event objects, max 9 per page
-    model = Event
 
-    Event.objects.all()
+def get_day_from_dayint(dayint):
+    for day_tuple in DAYS:
+        if day_tuple[0] == dayint:
+            return day_tuple[1]
+
+
+def get_level_from_levelint(levelint):
+    for level_tuple in LEVELS:
+        if level_tuple[0] == levelint:
+            return level_tuple[1]
+
+
+class EventList(generic.ListView):
+    #view to render the Event objects
+    model = Event
     template_name = 'events.html'
+
+    def get_queryset(self):
+        events = Event.objects.all()
+        for event in events:
+            event.day_string = get_day_from_dayint(event.day)
+            event.level_string = get_level_from_levelint(event.level)
+
+        return events
 
 
 def booking(request):

@@ -23,7 +23,7 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ event.name }}</h5>
-                        <p class="card-text">Join us on {{ event.day }} for a run at {{ event.location }}.<p>This is a {{ event.level }} level run.</p></p>
+                        <p class="card-text">Join us on {{ event.day_string }} for a run at {{ event.location }}.<p>The level today is: {{ event.level_string }}.</p></p>
                     </div>
                 </div>
             </div>
