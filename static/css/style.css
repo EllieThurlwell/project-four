@@ -48,6 +48,11 @@ html, body {
 
 /* events.html */
 
+.event-card {
+  width: 25vw;
+}
+
 #map {
     height: 40vh;
+    margin-bottom: 1rem;
   }

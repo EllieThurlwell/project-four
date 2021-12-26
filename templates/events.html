@@ -14,7 +14,7 @@
         <div class="row justify-content-center">
         <!-- event items -->
             {% for event in event_list %}
-                <div class="col-sm-6">
+                <div class="col-sm-6 event-card">
                     <div class="card">
                         {% if "placeholder" in event.featured_image.url %}
                             <img src="https://res.cloudinary.com/elliecloud94/image/upload/v1640370315/hero_ldzbyr.jpg" class="card-img-top" alt="{{ event.location }}">
