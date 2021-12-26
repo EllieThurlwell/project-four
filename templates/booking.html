@@ -6,7 +6,7 @@
 
 <section class="page-section">
     <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0 page-title">
         Book a run
         </h2>
 
@@ -26,7 +26,7 @@
                     <form method="POST" style="margin-top: 1.3em;">
                         {{ booking_form | crispy }}
                         {% csrf_token %}
-                        <button type="submit" class="btn">Book run</button>
+                        <button type="submit" class="col-sm-2 btn btn-primary btn-input">Book run</button>
                     </form>
                 </div>
             </div>

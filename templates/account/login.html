@@ -9,10 +9,10 @@
 
 <section class="page-section">
   <div class="container">
-    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{% trans "Sign In" %}</h2>
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0 page-title">{% trans "Sign In" %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <p>{% blocktrans %}If you have not created an account yet, then please<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+        <p>{% blocktrans %}If you haven't joined the club yet, then please <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
       </div>
       <div class="form-floating mb-3 col-lg-8">
         <form class="login" method="POST" action="{% url 'account_login' %}">
@@ -21,7 +21,7 @@
           {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
           {% endif %}
-          <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+          <button class="primaryAction col-sm-2 btn btn-primary btn-input" type="submit">{% trans "Sign In" %}</button>
         </form>
       </div>
     </div>

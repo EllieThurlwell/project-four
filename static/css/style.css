@@ -1,5 +1,23 @@
 /* personal style decisions not from bootstrap template */
 
+/* overall style */
+.page-section {
+  padding-top: 7rem;
+}
+
+html, body {
+  height: 100%;
+}
+
+.page-title {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.btn-input {
+  margin: 1rem;
+}
+
 /* index.html */
 #header {
   padding-bottom: 3rem;
@@ -28,12 +46,8 @@
   padding-bottom: 2rem;
 }
 
-/* overall style */
-.page-section {
-  padding-top: 7rem;
-}
+/* events.html */
 
 #map {
     height: 40vh;
-    width: 40vw;
   }
