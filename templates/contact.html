@@ -4,21 +4,23 @@
 
 {% load crispy_forms_tags %}
 
-<div class="container">
-    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+<section class="page-section">
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
         Contact Us
-    </h2>
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <p>Want to get in touch? Fill out the form and we'll get back to you as soon as we finish our run!</p>
-        </div>
+        </h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <p>Want to get in touch? Fill out the form and we'll get back to you as soon as we finish our run!</p>
+            </div>
 
-        <form method="POST" style="margin-top: 1.3em;">
-            {{ contact_form | crispy }}
-            {% csrf_token %}
-            <button type="submit" class="btn">Send message</button>
-        </form>
+            <form method="POST" style="margin-top: 1.3em;">
+                {{ contact_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn">Send message</button>
+            </form>
+        </div>
     </div>
-</div>
+</section>
 
 {% endblock %}

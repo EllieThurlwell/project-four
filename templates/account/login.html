@@ -7,23 +7,25 @@
 
 {% block content %}
 
-<div class="container">
+<section class="page-section">
+  <div class="container">
     <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{% trans "Sign In" %}</h2>
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <p>{% blocktrans %}If you have not created an account yet, then please<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-    </div>
-    <div class="form-floating mb-3 col-lg-8">
-      <form class="login" method="POST" action="{% url 'account_login' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-        {% endif %}
-        <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-      </form>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <p>{% blocktrans %}If you have not created an account yet, then please<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+      </div>
+      <div class="form-floating mb-3 col-lg-8">
+        <form class="login" method="POST" action="{% url 'account_login' %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 {% endblock %}

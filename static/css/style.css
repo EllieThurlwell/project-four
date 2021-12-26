@@ -28,7 +28,10 @@
   padding-bottom: 2rem;
 }
 
-
+/* overall style */
+.page-section {
+  padding-top: 7rem;
+}
 
 #map {
     height: 40vh;
