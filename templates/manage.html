@@ -16,7 +16,7 @@
                             <h5 class="card_title">{{ run.user }}'s run</h5>
                             <p class="card_text">You are booked for a run on {{ run.date }}</p>
                             <span><a class="col-sm-3 btn btn-primary btn-input" href="{% url 'edit_booking' run.id %}">Edit</a></span>
-                            <span><a class="col-sm-3 btn btn-primary btn-input" href="{% url 'delete_booking' run.id %}">Delete</a></span>
+                            <span><a class="col-sm-3 btn btn-primary btn-input" href="{% url 'delete_booking' run.id %}">Cancel</a></span>
                         </div>
                     </div>
                 </div>
