@@ -16,6 +16,7 @@ html, body {
 
 .btn-input {
   margin: 1rem;
+  width: 12rem;
 }
 
 #msg {
@@ -53,7 +54,6 @@ html, body {
 }
 
 /* events.html */
-
 .event-card {
   width: 25vw;
 }
@@ -61,4 +61,45 @@ html, body {
 #map {
     height: 40vh;
     margin-bottom: 1rem;
+}
+
+/* manage.html */
+.btn-manage {
+  width: 10rem;
+  margin-top: 1rem;
+  display: block;
+}
+
+/* media queries */
+@media screen and (max-width: 1024px) {
+  #map {
+    height: 30vh;
   }
+  .event-card {
+    width: 40vw;
+  }
+  .manage-card {
+    width: 35vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .event-card {
+    width: 50vw;
+  }
+  .manage-card {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .event-card {
+    width: 75vw;
+  }
+  .manage-card {
+    width: 75vw;
+  }
+  .btn-manage {
+    width: 7rem;
+  }
+}

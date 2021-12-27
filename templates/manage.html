@@ -10,13 +10,13 @@
         </h2>
         <div class="row justify-content-center">
             {% for run in runs %}
-                <div class="col-sm-4">
+                <div class="col-sm-4 manage-card">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card_title">{{ run.user }}'s run</h5>
-                            <p class="card_text">You are booked for a run on {{ run.date }}</p>
-                            <span><a class="col-sm-3 btn btn-primary btn-input" href="{% url 'edit_booking' run.id %}">Edit</a></span>
-                            <span><a class="col-sm-3 btn btn-primary btn-input" href="{% url 'delete_booking' run.id %}">Cancel</a></span>
+                            <h5 class="card_title">Your run</h5>
+                            <p class="card_text">{{ run.user }}, you are booked for a run on {{ run.date }}</p>
+                            <span><a class="col-sm-3 btn btn-primary btn-manage" href="{% url 'edit_booking' run.id %}">Edit</a></span>
+                            <span><a class="col-sm-3 btn btn-primary btn-manage" href="{% url 'delete_booking' run.id %}">Cancel</a></span>
                         </div>
                     </div>
                 </div>

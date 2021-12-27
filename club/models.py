@@ -24,7 +24,7 @@ class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.fname} {self.lname} - {self.email} booked {self.option}"
+        return f"{self.name} - {self.email} booked on {self.date}"
 
 #schema for Contact model of contact form
 class Contact(models.Model):
