@@ -65,9 +65,9 @@ def booking(request):
         if booking_form.is_valid():
             booked_run = Booking.objects.create(
                 user=request.user,
-                name=request.POST.get("name"),
-                email=request.POST.get("email"),
-                date=request.POST.get("date")
+                name=request.POST.get("name", ""),
+                email=request.POST.get("email", ""),
+                date=request.POST.get("date", "")
             )
             booked_run.save()
             messages.add_message(request, messages.SUCCESS, 'Run booked!')

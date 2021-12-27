@@ -6,9 +6,11 @@ from .models import Event, Contact, Booking
 class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'day', 'level', 'location')
 
+
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'message')
+
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):

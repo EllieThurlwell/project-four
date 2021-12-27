@@ -7,6 +7,7 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ('name', 'email', 'message',)
 
+
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
