@@ -5,7 +5,8 @@ from cloudinary.models import CloudinaryField
 DAYS = ((0, "Tuesday"), (1, "Thursday"), (2, "Saturday"))
 LEVELS = ((0, "Beginner"), (1, "Intermediate"), (2, "Push yourself"))
 
-#schema for Event model
+
+# schema for Event model
 class Event(models.Model):
     name = models.CharField(max_length=200, unique=True)
     day = models.IntegerField(choices=DAYS)
@@ -16,7 +17,8 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
-#schema for Booking model
+
+# schema for Booking model
 class Booking(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(unique=False)
@@ -26,7 +28,8 @@ class Booking(models.Model):
     def __str__(self):
         return f"{self.name} - {self.email} booked on {self.date}"
 
-#schema for Contact model of contact form
+
+# schema for Contact model of contact form
 class Contact(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(unique=False)

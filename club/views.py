@@ -2,18 +2,17 @@ from django.shortcuts import render, reverse, get_object_or_404
 from django.views import generic, View
 from django.http.response import HttpResponseRedirect
 from django.views.generic.base import TemplateView
-from django.conf import settings
 from django.contrib import messages
 from .models import Event, Booking, DAYS, LEVELS
 from .forms import ContactForm, BookingForm
 
 
 class HomePage(TemplateView):
-    #view to render the homepage
+    # view to render the homepage
     template_name = 'index.html'
-    
 
-#get string values from tuples
+
+# get string values from tuples
 def get_day_from_dayint(dayint):
     for day_tuple in DAYS:
         if day_tuple[0] == dayint:
@@ -27,7 +26,7 @@ def get_level_from_levelint(levelint):
 
 
 class EventList(generic.ListView):
-    #view to render the Event objects
+    # view to render the Event objects
     model = Event
     template_name = 'events.html'
 
@@ -41,12 +40,12 @@ class EventList(generic.ListView):
 
 
 def contact(request):
-    #view to render the Contact form to contact.html
+    # view to render the Contact form to contact.html
     contact_form = None
-    if request.method == 'POST':    
+    if request.method == 'POST':
         contact_form = ContactForm(data=request.POST)
         if contact_form.is_valid():
-            contact = contact_form.save()
+            contact_form.save()
             messages.add_message(request, messages.SUCCESS, 'Message sent!')
             return HttpResponseRedirect(reverse('contact'))
     else:
@@ -58,7 +57,7 @@ def contact(request):
 
 
 def booking(request):
-    #view to render the Booking form to booking.html
+    # view to render the Booking form to booking.html
     booking_form = None
 
     if request.method == 'POST':
@@ -79,10 +78,10 @@ def booking(request):
     context = {'booking_form': booking_form}
 
     return render(request, 'booking.html', context)
-    
-  
+
+
 class ManageBooking(generic.ListView):
-    #view to render the manage booking page for logged in user
+    # view to render the manage booking page for logged in user
     model = Booking
     context_object_name = 'runs'
     template_name = 'manage.html'
@@ -92,7 +91,7 @@ class ManageBooking(generic.ListView):
 
 
 class EditBooking(View):
-    #view to render the edit booking form for logged in user
+    # view to render the edit booking form for logged in user
     def get(self, request, id):
         queryset = Booking.objects.filter(user=request.user)
         run = get_object_or_404(queryset, id=id)
@@ -107,21 +106,18 @@ class EditBooking(View):
 
         if edit_booking_form.is_valid():
             edit_booking_form.save()
-            messages.add_message(request, messages.SUCCESS, 'Booking successfully edited')
+            messages.add_message(request, messages.SUCCESS,
+                                 'Booking successfully edited')
             return HttpResponseRedirect(reverse('manage'))
-            
+
         return render(request, 'edit-booking.html', context)
 
+
 def delete_booking(request, id):
-    #view to delete a specific booking for logged in user
+    # view to delete a specific booking for logged in user
     queryset = Booking.objects.filter(user=request.user)
     run = get_object_or_404(queryset, id=id)
 
     run.delete()
     messages.add_message(request, messages.SUCCESS, 'Booking cancelled')
     return HttpResponseRedirect(reverse('manage'))
-
-
-
-
-
